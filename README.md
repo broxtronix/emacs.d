@@ -1,9 +1,9 @@
 # My emacs settings
 
-My emacs settings were originally forked off of the truly comprehensive set of
-Emacs settings made by [Magnar Sveen](https://github.com/magnars/.emacs.d). Be
-sure to check out his [emacsrocks](http://emacsrocks.com/) video tutorial series
-and his [what the emacs.d](http://whattheemacsd.com/) blog.
+My emacs settings were originally forked off of the truly comprehensive and quite 
+excellent set of Emacs settings made by [Magnar Sveen](https://github.com/magnars/.emacs.d). 
+Be sure to check out his [emacsrocks](http://emacsrocks.com/) video tutorial series
+and his [what the emacs.d](http://whattheemacsd.com/) blog.  
 
 My settings have evolved from there, but in general I follow the trend that
 seems to be shared by these wise Emacs users:
