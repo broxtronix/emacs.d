@@ -27,7 +27,13 @@ installing all of its required dependencies automatically using pacakage.el.
 
  * Start by reading up on all the cool stuff in key-bindings.el.
 
- * Find file in project with `C-x o`, in dir with `C-x C-f`, recent with `C-x f`
+ * Shift between panels with shift-<arrow keys>
+
+ * C-x C-y to browse the kill ring
+
+ * C-w kills previous word and M-w copies current line ... if no region is selected.
+
+ * Find file in project with `C-x C-o`, in dir with `C-x C-f`, recent with `C-x f`
 
  * Add your user- and project-specific stuff in .emacs.d/users/[machine name]/*.el
 

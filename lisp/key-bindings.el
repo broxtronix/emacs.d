@@ -1,62 +1,12 @@
-;; I don't need to kill emacs that easily
-;; the mnemonic is C-x REALLY QUIT
-;;(global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
-;;(global-set-key (kbd "C-x C-c") 'delete-frame)
-
 ;; Completion that uses many different methods to find options.
-(global-set-key (kbd "C-.") 'hippie-expand-no-case-fold)
-(global-set-key (kbd "C-:") 'hippie-expand-lines)
-(global-set-key (kbd "C-,") 'completion-at-point)
-
-(require 'misc)
-(global-set-key (kbd "s-.") 'copy-from-above-command)
+(global-set-key (kbd "M-/") 'hippie-expand-no-case-fold)
+;;(global-set-key (kbd "C-:") 'hippie-expand-lines)
+;;(global-set-key (kbd "C-,") 'completion-at-point)
 
 ;; Smart M-x
 (global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-
-;; Use C-x C-m to do M-x per Steve Yegge's advice
-(global-set-key (kbd "C-x C-m") 'smex)
-
-;; Expand region (increases selected region by semantic units)
-(global-set-key (if is-mac (kbd "C-@") (kbd "C-'")) 'er/expand-region)
-
-;; Experimental multiple-cursors
-(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
-(global-set-key (kbd "C-S-c C-e") 'mc/edit-ends-of-lines)
-(global-set-key (kbd "C-S-c C-a") 'mc/edit-beginnings-of-lines)
-
-;; Mark additional regions matching current region
-(global-set-key (kbd "M-æ") 'mc/mark-all-dwim)
-(global-set-key (kbd "C-å") 'mc/mark-previous-like-this)
-(global-set-key (kbd "C-æ") 'mc/mark-next-like-this)
-(global-set-key (kbd "C-Æ") 'mc/mark-more-like-this-extended)
-(global-set-key (kbd "M-å") 'mc/mark-all-in-region)
-
-;; Symbol and word specific mark-more
-(global-set-key (kbd "s-æ") 'mc/mark-next-word-like-this)
-(global-set-key (kbd "s-å") 'mc/mark-previous-word-like-this)
-(global-set-key (kbd "M-s-æ") 'mc/mark-all-words-like-this)
-(global-set-key (kbd "s-Æ") 'mc/mark-next-symbol-like-this)
-(global-set-key (kbd "s-Å") 'mc/mark-previous-symbol-like-this)
-(global-set-key (kbd "M-s-Æ") 'mc/mark-all-symbols-like-this)
-
-;; Extra multiple cursors stuff
-(global-set-key (kbd "C-~") 'mc/reverse-regions)
-(global-set-key (kbd "M-~") 'mc/sort-regions)
-(global-set-key (kbd "H-~") 'mc/insert-numbers)
-
-(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
-
-;; Set anchor to start rectangular-region-mode
-(global-set-key (kbd "H-SPC") 'set-rectangular-region-anchor)
-
-;; Replace rectangle-text with inline-string-rectangle
-(global-set-key (kbd "C-x r t") 'inline-string-rectangle)
-
-;; Quickly jump in document with ace-jump-mode
-(define-key global-map (kbd "C-ø") 'ace-jump-mode)
 
 ;; Perform general cleanup.
 (global-set-key (kbd "C-c n") 'cleanup-buffer)
@@ -192,8 +142,8 @@
 
 (global-set-key (kbd "M-<up>") 'smart-up)
 (global-set-key (kbd "M-<down>") 'smart-down)
-(global-set-key (kbd "M-<left>") 'smart-backward)
-(global-set-key (kbd "M-<right>") 'smart-forward)
+;;(global-set-key (kbd "M-<left>") 'smart-backward)
+;;(global-set-key (kbd "M-<right>") 'smart-forward)
 
 ;; Webjump let's you quickly search google, wikipedia, emacs wiki
 (global-set-key (kbd "C-x g") 'webjump)
@@ -219,11 +169,6 @@
 (global-set-key (kbd "H-*") 'beginning-of-buffer) ;; H-p
 (global-set-key (kbd "H-n") 'end-of-buffer)
 
-;; Convenience on ThinkPad Keyboard: Use back/forward as pg up/down
-(global-set-key (kbd "<XF86Back>") 'scroll-down)
-(global-set-key (kbd "<XF86Forward>") 'scroll-up)
-(global-set-key (kbd "<XF86WakeUp>") 'beginning-of-buffer)
-
 ;; Query replace regex key binding
 (global-set-key (kbd "M-&") 'query-replace-regexp)
 
@@ -231,7 +176,7 @@
 (define-key isearch-mode-map (kbd "C-o") 'isearch-yank-selection)
 
 ;; Comment/uncomment block
-(global-set-key (kbd "C-c c") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-3") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-c u") 'uncomment-region)
 
 ;; Eval buffer
@@ -312,32 +257,7 @@
 (global-set-key (kbd "M-s f") 'find-name-dired)
 
 ;; Find file in project
-(global-set-key (kbd "C-x o") 'find-file-in-project)
-
-;; Find file in project, with specific patterns
-(global-unset-key (kbd "C-x C-o")) ;; which used to be delete-blank-lines (also bound to C-c C-<return>)
-(global-set-key (kbd "C-x C-o ja") (ffip-create-pattern-file-finder "*.java"))
-(global-set-key (kbd "C-x C-o js") (ffip-create-pattern-file-finder "*.js"))
-(global-set-key (kbd "C-x C-o ht") (ffip-create-pattern-file-finder "*.html"))
-(global-set-key (kbd "C-x C-o jp") (ffip-create-pattern-file-finder "*.jsp"))
-(global-set-key (kbd "C-x C-o cs") (ffip-create-pattern-file-finder "*.css"))
-(global-set-key (kbd "C-x C-o ft") (ffip-create-pattern-file-finder "*.feature"))
-(global-set-key (kbd "C-x C-o cl") (ffip-create-pattern-file-finder "*.clj"))
-(global-set-key (kbd "C-x C-o el") (ffip-create-pattern-file-finder "*.el"))
-(global-set-key (kbd "C-x C-o ed") (ffip-create-pattern-file-finder "*.edn"))
-(global-set-key (kbd "C-x C-o md") (ffip-create-pattern-file-finder "*.md"))
-(global-set-key (kbd "C-x C-o rb") (ffip-create-pattern-file-finder "*.rb"))
-(global-set-key (kbd "C-x C-o or") (ffip-create-pattern-file-finder "*.org"))
-(global-set-key (kbd "C-x C-o ph") (ffip-create-pattern-file-finder "*.php"))
-(global-set-key (kbd "C-x C-o tx") (ffip-create-pattern-file-finder "*.txt"))
-(global-set-key (kbd "C-x C-o vm") (ffip-create-pattern-file-finder "*.vm"))
-(global-set-key (kbd "C-x C-o xm") (ffip-create-pattern-file-finder "*.xml"))
-(global-set-key (kbd "C-x C-o in") (ffip-create-pattern-file-finder "*.ini"))
-(global-set-key (kbd "C-x C-o pr") (ffip-create-pattern-file-finder "*.properties"))
-(global-set-key (kbd "C-x C-o in") (ffip-create-pattern-file-finder "*.ini"))
-(global-set-key (kbd "C-x C-o gr") (ffip-create-pattern-file-finder "*.groovy"))
-(global-set-key (kbd "C-x C-o ga") (ffip-create-pattern-file-finder "*.gradle"))
-(global-set-key (kbd "C-x C-o !") (ffip-create-pattern-file-finder "*"))
+(global-set-key (kbd "C-x C-o") 'find-file-in-project)
 
 ;; View occurrence in occur mode
 (define-key occur-mode-map (kbd "v") 'occur-mode-display-occurrence)

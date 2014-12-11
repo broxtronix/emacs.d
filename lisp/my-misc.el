@@ -32,6 +32,16 @@
 ;; Use normal tabs in makefiles
 (add-hook 'makefile-mode-hook 'indent-tabs-mode)
 
+(defun comment-or-uncomment-region-or-line ()
+  "Comments or uncomments the region or the current line if there's no active region."
+  (interactive)
+  (let (beg end)
+    (if (region-active-p)
+        (setq beg (region-beginning) end (region-end))
+      (setq beg (line-beginning-position) end (line-end-position)))
+    (comment-or-uncomment-region beg end))
+    (next-line))
+
 ;; More neat bindings for C-x 8
 (global-set-key (kbd "C-x 8 t m") (λ (insert "™")))
 (global-set-key (kbd "C-x 8 ( c )") (λ (insert "©")))

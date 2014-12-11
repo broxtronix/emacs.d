@@ -82,6 +82,7 @@
      flx-ido
      css-eldoc
      yasnippet
+     shell-command
      smartparens
      ido-vertical-mode
      ido-at-point
