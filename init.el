@@ -76,10 +76,15 @@
      move-text
      gist
      htmlize
+     simplezen
+     crappy-jsp-mode
+     web-mode
+     less-css-mode
      visual-regexp
      flycheck
      flx
      flx-ido
+     bash-completion
      css-eldoc
      yasnippet
      shell-command
@@ -156,8 +161,6 @@
 (eval-after-load 'markdown-mode '(require 'setup-markdown-mode))
 
 ;; Load stuff on demand
-(autoload 'skewer-start "setup-skewer" nil t)
-(autoload 'skewer-demo "setup-skewer" nil t)
 (autoload 'flycheck-mode "setup-flycheck" nil t)
 (autoload 'auto-complete-mode "auto-complete" nil t)
 

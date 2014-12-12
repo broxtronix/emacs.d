@@ -49,6 +49,7 @@
   (define-key ido-file-dir-completion-map (kbd "C-x C-w") 'ido-copy-current-file-name))
 
 (add-hook 'ido-setup-hook 'my/setup-ido)
+(add-hook 'ido-setup-hook 'sd/ido-define-keys)
 
 ;; Always rescan buffer for imenu
 (set-default 'imenu-auto-rescan t)

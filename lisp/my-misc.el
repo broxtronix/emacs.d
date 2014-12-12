@@ -55,5 +55,49 @@
 ;; A bit of misc cargo culting in misc.el
 (setq xterm-mouse-mode t)
 
+;; Turn on coloring for hex values in CSS, HTML, and Javascript Files
+(defun xah-syntax-color-hex ()
+  "Syntax color hex color spec such as 「#ff1100」 in current buffer."
+  (interactive)
+  (font-lock-add-keywords
+   nil
+   '(("#[abcdef[:digit:]]\\{6\\}"
+      (0 (put-text-property
+          (match-beginning 0)
+          (match-end 0)
+          'face (list :background (match-string-no-properties 0)))))))
+  (font-lock-fontify-buffer))
+
+(add-hook 'css-mode-hook 'xah-syntax-color-hex)
+(add-hook 'less-css-mode-hook 'xah-syntax-color-hex)
+(add-hook 'html-mode-hook 'xah-syntax-color-hex)
+(add-hook 'js2-mode-hook 'xah-syntax-color-hex)
+
+(defun xah-syntax-color-hsl ()
+  "Syntax color hex color spec such as 「hsl(0,90%,41%)」 in current buffer."
+  (interactive)
+  (font-lock-add-keywords
+   nil
+   '(("hsl( *\\([0-9]\\{1,3\\}\\) *, *\\([0-9]\\{1,3\\}\\)% *, *\\([0-9]\\{1,3\\}\\)% *)"
+      (0 (put-text-property
+          (+ (match-beginning 0) 3)
+          (match-end 0)
+          'face (list :background
+                      (concat "#" (mapconcat 'identity
+                                             (mapcar
+                                              (lambda (x) (format "%02x" (round (* x 255))))
+                                              (color-hsl-to-rgb
+                                               (/ (string-to-number (match-string-no-properties 1)) 360.0)
+                                               (/ (string-to-number (match-string-no-properties 2)) 100.0)
+                                               (/ (string-to-number (match-string-no-properties 3)) 100.0)
+                                               ) )
+                                             "" )) ;  "#00aa00"
+                      ))))) )
+  (font-lock-fontify-buffer))
+
+(add-hook 'css-mode-hook 'xah-syntax-color-hsl)
+(add-hook 'less-css-mode-hook 'xah-syntax-color-hsl)
+(add-hook 'html-mode-hook 'xah-syntax-color-hsl)
+(add-hook 'js2-mode-hook 'xah-syntax-color-hsl)
 
 (provide 'my-misc)

@@ -8,9 +8,9 @@
 (add-to-list 'auto-mode-alist '("Cask$" . emacs-lisp-mode))
 
 ;; CSS
-(add-to-list 'auto-mode-alist '("\\.scss$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.css$" . css-mode))
-(add-to-list 'auto-mode-alist '("\\.less$" . css-mode))
+(add-to-list 'auto-mode-alist '("\\.scss$" . less-css-mode))
+(add-to-list 'auto-mode-alist '("\\.css$" . less-css-mode))
+(add-to-list 'auto-mode-alist '("\\.less$" . less-css-mode))
 (autoload 'turn-on-css-eldoc "css-eldoc")
 (add-hook 'css-mode-hook 'turn-on-css-eldoc)
 
