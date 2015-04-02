@@ -2,7 +2,7 @@
 
 (setq js2-highlight-level 3)
 (add-hook 'js-mode-hook 'js2-minor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
+;;(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 ;; Set default tab size to 2, and turn on "bounce" indenting (hit tab to cycle)
 (custom-set-variables

@@ -14,3 +14,8 @@
  ;; If there is more than one, they won't work right.
  '(js2-error-face ((t nil)) t)
  '(js2-warning-face ((t nil)) t))
+
+
+;; This gives you a tab of 2 spaces
+(custom-set-variables '(coffee-tab-width 2))
+

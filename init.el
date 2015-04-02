@@ -70,12 +70,14 @@
      browse-kill-ring
      smex
      ido-ubiquitous
+     julia-mode
      eproject
      wgrep
      paredit
      move-text
      gist
      htmlize
+     coffee-mode
      simplezen
      crappy-jsp-mode
      web-mode
@@ -84,12 +86,15 @@
      flycheck
      flx
      flx-ido
+     markdown-mode
      bash-completion
+     js3-mode
      css-eldoc
      yasnippet
      shell-command
      smartparens
      ido-vertical-mode
+     python-mode
      ido-at-point
      simple-httpd
      guide-key
@@ -232,3 +237,19 @@
 ;; Conclude init by setting up specifics for the current user
 (when (file-exists-p user-settings-dir)
   (mapc 'load (directory-files user-settings-dir nil "^[^#].*el$")))
+
+;; Python Hook
+(defface extra-whitespace-face
+  '((t (:background "pale green")))
+  "Used for tabs and such.")
+
+(defvar my-extra-keywords
+  '(("\t" . 'extra-whitespace-face)))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (font-lock-add-keywords nil my-extra-keywords)
+            (setq python-guess-indent nil)
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq python-indent 4)))
